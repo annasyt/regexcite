@@ -10,5 +10,8 @@
 #' capitalize("hello")
 #' capitalize(c("apple", "banana"))
 capitalize <- function(x) {
-  paste0(toupper(substring(x, 1, 1)), substring(x, 2))
+  if (!is.character(x)) stop("Input must be a character vector")
+  out <- ifelse(is.na(x), NA_character_,
+                paste0(toupper(substring(x, 1, 1)), substring(x, 2)))
+  return(out)
 }
